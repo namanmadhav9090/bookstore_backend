@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.get("/",(req, res)=>{
-    return res.send("Ok");
+    return res.status(200).send("Hello vercel");
 })
 // Routes
 app.use('/api/books', bookRoutes);
