@@ -21,8 +21,8 @@ app.use(cors(
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-app.get("/",(req, res)=>{
-    return res.status(200).send("Hello vercel");
+app.use("/",(req, res)=>{
+    res.json({message:"Hello vercel"});
 })
 // Routes
 app.use('/api/books', bookRoutes);
