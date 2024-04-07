@@ -7,8 +7,16 @@ const router = require('./routes/user');
 const cors = require('cors');
 const bookRoutes = require('./routes/books');
 const cartRoutes = require('./routes/cart');
+
+
   
-app.use(cors());
+app.use(cors(
+  {
+    origin: [https://deploy-mern-1whq.vercel.app],
+    method: ["POST","GET","PUT","DELETE"],
+    credentials: true
+  }
+));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
