@@ -20,13 +20,13 @@ module.exports = {
         
             const { error } = schema.validate(req.body);
             if (error) {
-              return res.status(400).json({ message: error.details[0].message });
+              return res.status(400).json(error.details[0].message);
             }
         
            
             const existingBook = await Book.findOne({ title });
             if (existingBook) {
-              return res.status(400).json({ message: 'Book already exists' });
+              return res.status(400).json('Book already exists');
             }
         
            
@@ -36,7 +36,7 @@ module.exports = {
             res.status(201).json({ message: 'Book registered successfully', book: newBook });
           } catch (error) {
             console.error(error);
-            res.status(500).json({ message: 'Internal Server Error' });
+            res.status(500).json('Internal Server Error');
           }
         },
 
@@ -48,7 +48,7 @@ module.exports = {
              
               const book = await Book.findById(id);
               if (!book) {
-                return res.status(404).json({ message: 'Book not found' });
+                return res.status(404).json('Book not found');
               }
               res.json(book);
             } else {
@@ -58,7 +58,7 @@ module.exports = {
             }
           } catch (error) {
             console.error(error);
-            res.status(500).json({ message: 'Internal Server Error' });
+            res.status(500).json('Internal Server Error');
           }
         },
 
@@ -70,7 +70,7 @@ module.exports = {
          
             const existingBook = await Book.findById(id);
             if (!existingBook) {
-              return res.status(404).json({ message: 'Book not found' });
+              return res.status(404).json('Book not found');
             }
         
             
@@ -87,7 +87,7 @@ module.exports = {
             res.json({ message: 'Book updated successfully', book: existingBook });
           } catch (error) {
             console.error(error);
-            res.status(500).json({ message: 'Internal Server Error' });
+            res.status(500).json('Internal Server Error');
           }
     },
 
@@ -98,7 +98,7 @@ module.exports = {
             res.json({ message: 'Book deleted successfully' });
         } catch (error) {
             console.error(error);
-            res.status(500).json({ message: 'Internal Server Error' });
+            res.status(500).json('Internal Server Error');
         }
     },
 
@@ -123,7 +123,7 @@ module.exports = {
         res.json(books);
       } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Internal Server Error' });
+        res.status(500).json('Internal Server Error');
       }
     }
 }
