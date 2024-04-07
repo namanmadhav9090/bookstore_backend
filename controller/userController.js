@@ -18,13 +18,13 @@ const register = async(req, res) => {
       const { error, value } = schema.validate(req.body);
 
       if(error){
-         return res.status(400).json({ message : error.details[0].message});
+         return res.status(400).json(error.details[0].message);
       }
   
       const user = await User.findOne({ email });
      
       if (user) {
-        return res.status(400).json({ message: 'User already exists' });
+        return res.status(400).json('User already exists');
       }
   
       // Hash password
@@ -43,7 +43,7 @@ const register = async(req, res) => {
       res.status(201).json({ message: 'User registered successfully', user:data, access_token : generateToken });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Internal Server Error' });
+      res.status(500).json('Internal Server Error');
     }
   
 }
@@ -60,11 +60,11 @@ const login = async (req, res) => {
       const { error, value } = schema.validate(req.body);
 
       if(error){
-         return res.status(400).json({ message : error.details[0].message});
+         return res.status(400).json(error.details[0].message);
       }
   
       const user = await User.findOne({ email: email });
-      if (!user) return res.status(400).json({ message: 'User does not exist' });
+      if (!user) return res.status(400).json('User does not exist');
 
       const isValid = await bcrypt.compare(password, user.password);
       if (!isValid) return res.status(400).json("Wrong Password");
@@ -79,7 +79,7 @@ const login = async (req, res) => {
 
    } catch (error) {
       console.log('error:', error);
-      res.status(500).json({ message: 'Internal Server Error' });
+      res.status(500).json('Internal Server Error');
    }
 }
 
