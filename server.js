@@ -12,7 +12,7 @@ const cartRoutes = require('./routes/cart');
   
 app.use(cors(
   {
-    origin: [https://deploy-mern-1whq.vercel.app],
+    origin: ["https://deploy-mern-1whq.vercel.app"],
     method: ["POST","GET","PUT","DELETE"],
     credentials: true
   }
