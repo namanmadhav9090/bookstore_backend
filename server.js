@@ -20,9 +20,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-app.use("/",(req, res)=>{
-    res.json({message:"Hello vercel"});
-})
+// app.use("/",(req, res)=>{
+//     res.json({message:"Hello vercel"});
+// })
 // Routes
 app.use('/api/books', bookRoutes);
 app.use('/api/cart', cartRoutes);
