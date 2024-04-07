@@ -8,14 +8,13 @@ const cors = require('cors');
 const bookRoutes = require('./routes/books');
 const cartRoutes = require('./routes/cart');
   
-app.use(cors(
-    {
-        origin: ["https://bookstore-frontend-eight-zeta.vercel.app/"],
-        method: ["POST","GET","PUT","DELETE"],
-        credentials: true
-      }
-));
+app.use(cors());
 
+ // {
+ //        origin: ["https://bookstore-frontend-eight-zeta.vercel.app/"],
+ //        method: ["POST","GET","PUT","DELETE"],
+ //        credentials: true
+ //      }
 
 
 app.use(express.json());
